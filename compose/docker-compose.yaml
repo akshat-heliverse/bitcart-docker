@@ -28,12 +28,10 @@ services:
   backend:
     depends_on:
     - bitcoin
-    - ergon
     - database
     - redis
     links:
     - bitcoin
-    - ergon
     - database
     - redis
     restart: unless-stopped
@@ -126,16 +124,6 @@ services:
     - dbdata:/var/lib/postgresql/data
     expose:
     - '5432'
-  ergon:
-    restart: unless-stopped
-    image: bitcart/bitcart-xrg:stable
-    environment:
-      XRG_NETWORK: ${XRG_NETWORK:-mainnet}
-      XRG_DEBUG: ${XRG_DEBUG:-false}
-    expose:
-    - '5005'
-    volumes:
-    - ergon_datadir:/data
   redis:
     restart: unless-stopped
     image: redis:alpine
@@ -223,7 +211,6 @@ services:
 networks: {}
 volumes:
   bitcoin_datadir: null
-  ergon_datadir: null
   bitcart_datadir: null
   backup_datadir:
     external: true
