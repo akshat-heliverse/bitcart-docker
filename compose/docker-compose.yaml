@@ -102,7 +102,8 @@ services:
     - ./plugins/store:/plugins/store
     - ./plugins/daemon:/plugins/daemon
     - ./plugins/docker:/plugins/docker
-    - /root/.ssh/authorized_keys:${BITCART_SSH_AUTHORIZED_KEYS}
+    # SSH authorized_keys mount removed for Coolify compatibility (variable substitution not allowed)
+    # - /root/.ssh/authorized_keys:${BITCART_SSH_AUTHORIZED_KEYS}
     - tor_servicesdir:/var/lib/tor/hidden_services
     - tor_torrcdir:/usr/local/etc/tor/
   bitcoin:
@@ -293,7 +294,8 @@ services:
     - ./plugins/store:/plugins/store
     - ./plugins/daemon:/plugins/daemon
     - ./plugins/docker:/plugins/docker
-    - /root/.ssh/authorized_keys:${BITCART_SSH_AUTHORIZED_KEYS}
+    # SSH authorized_keys mount removed for Coolify compatibility (variable substitution not allowed)
+    # - /root/.ssh/authorized_keys:${BITCART_SSH_AUTHORIZED_KEYS}
     - /var/lib/dbus/machine-id:/var/lib/dbus/machine-id
     - tor_servicesdir:/var/lib/tor/hidden_services
     - tor_torrcdir:/usr/local/etc/tor/
